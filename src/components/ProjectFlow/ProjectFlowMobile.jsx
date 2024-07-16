@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import "./ProjectFlow.css";
+import ScrollAnimation from "react-animate-on-scroll";
+import "animate.css/animate.compat.css";
 
 const ProjectFlow = () => {
   const [selectedCard, setSelectedCard] = useState("c1");
@@ -20,11 +22,13 @@ const ProjectFlow = () => {
   return (
     <div style={{ backgroundColor: "#eeeae0", padding: "20px" }}>
       <section className="project-flow">
-        <h2>Project Flow</h2>
-        <p>
-          Our Project Flow ensures a seamless and efficient interior design
-          experience, encompassing:
-        </p>
+        <ScrollAnimation animateIn="fadeInLeft" animateOut="fadeOutLeft">
+          <h2>Project Flow</h2>
+          <p>
+            Our Project Flow ensures a seamless and efficient interior design
+            experience, encompassing:
+          </p>
+        </ScrollAnimation>
         <Wrapper>
           <Container>
             {cards.map((card, index) => (
@@ -37,6 +41,7 @@ const ProjectFlow = () => {
                   onChange={() => handleCardChange(card.id, index)}
                   style={{ display: "none" }}
                 />
+                <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut">
                 <Card
                   ref={(el) => (cardRefs.current[index] = el)}
                   htmlFor={card.id}
@@ -57,6 +62,7 @@ const ProjectFlow = () => {
                     {!selectedCard && <CollapsedIcon></CollapsedIcon>}
                   </Row>
                 </Card>
+                </ScrollAnimation>
               </React.Fragment>
             ))}
           </Container>
@@ -143,7 +149,6 @@ const Container = styled.div`
 `;
 
 const Card = styled.label`
-  width: 100%;
   max-width: 100%;
   background-size: cover;
   cursor: pointer;
@@ -157,7 +162,8 @@ const Card = styled.label`
   background-color: #223;
   margin: 20px;
   height: ${(props) => (props.selected ? "auto" : "100px")};
-  padding: ${(props) => (props.selected ? "2em 0" : "0")}; // Conditional padding
+  padding: ${(props) =>
+    props.selected ? "2em 0" : "0"}; // Conditional padding
 `;
 
 const Row = styled.div`
@@ -195,7 +201,8 @@ const Description = styled.div`
   opacity: ${(props) => (props.selected ? 1 : 0)};
   transition: opacity 0.3s;
   height: auto;
-  padding: 10px;
+  padding: 10px 20px;
+  text-align: center;
 `;
 
 const CollapsedIcon = styled.div`

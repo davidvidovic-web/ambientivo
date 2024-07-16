@@ -323,10 +323,10 @@
     padding: 2em 0;
   }
   .home-cta > section {
-    padding: 3em 2em;
+    padding: 0 2em;
     display: flex;
     margin: 0;
-    max-width: 100% !important;
+    max-width: initial;
   }
   .home-cta h3 {
     text-align: center;

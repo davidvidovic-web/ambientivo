@@ -42,5 +42,10 @@
 
   .about figure {
     margin: 0;
+    text-align: center;
+  }
+
+  .about img {
+    max-height: 400px;
   }
 }

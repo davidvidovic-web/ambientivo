@@ -1,21 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./CompanyInNumbers.css";
 import counterUp from "counterup2";
+import ScrollAnimation from "react-animate-on-scroll";
+import "animate.css/animate.compat.css";
 
 function CompanyInNumbers() {
   const countersRef = useRef([]);
-  const [animated, setAnimated] = useState(false);
+  const [animated, setAnimated] = useState(
+    new Array(5).fill(false) // Create an array of false values for each counter
+  );
 
   useEffect(() => {
     const callback = (entries) => {
       entries.forEach((entry) => {
         const el = entry.target;
-        if (entry.isIntersecting && !animated) {
+        const index = countersRef.current.indexOf(el);
+
+        if (entry.isIntersecting && !animated[index]) {
           counterUp(el, {
             duration: 2000,
             delay: 16,
           });
-          setAnimated(true); // Set animated to true after the first animation
+          setAnimated((prevAnimated) => {
+            const newAnimated = [...prevAnimated];
+            newAnimated[index] = true; // Set animated state for this counter to true
+            return newAnimated;
+          });
         }
       });
     };
@@ -39,42 +49,88 @@ function CompanyInNumbers() {
 
   return (
     <section className="company-in-numbers">
-      <div className="meet-the-studio">
-        <h2>
-          Meet the studio <br /> in numbers
-        </h2>
-      </div>
+      <ScrollAnimation animateIn="fadeInLeft" animateOut="fadeOutLeft">
+        <div className="meet-the-studio">
+          <h2>
+            Meet the studio <br /> in numbers
+          </h2>
+        </div>
+      </ScrollAnimation>
+
       <div className="counters">
-        <div className="counter-container">
-          <div ref={(el) => (countersRef.current[0] = el)} className="counter">
-            15
+        <ScrollAnimation animateIn="fadeInRight" animateOut="fadeOutRight" delay='0.3s'>
+          <div className="counter-container">
+            <div
+              ref={(el) => (countersRef.current[0] = el)}
+              className="counter"
+            >
+              15
+            </div>
+            <span>Projects</span>
           </div>
-          <span>Projects</span>
-        </div>
-        <div className="counter-container">
-          <div ref={(el) => (countersRef.current[1] = el)} className="counter">
-            4
+        </ScrollAnimation>
+        <ScrollAnimation
+          animateIn="fadeInRight"
+          animateOut="fadeOutRight"
+          delay="0.6s"
+        >
+          <div className="counter-container">
+            <div
+              ref={(el) => (countersRef.current[1] = el)}
+              className="counter"
+            >
+              4
+            </div>
+            <span>Different purposes</span>
           </div>
-          <span>Different purposes</span>
-        </div>
-        <div className="counter-container">
-          <div ref={(el) => (countersRef.current[2] = el)} className="counter">
-            4
+        </ScrollAnimation>
+        <ScrollAnimation
+          animateIn="fadeInRight"
+          animateOut="fadeOutRight"
+          delay="0.9s"
+        >
+          <div className="counter-container">
+            <div
+              ref={(el) => (countersRef.current[2] = el)}
+              className="counter"
+            >
+              4
+            </div>
+            <span>Different countries</span>
+          </div>{" "}
+        </ScrollAnimation>
+
+        <ScrollAnimation
+          animateIn="fadeInRight"
+          animateOut="fadeOutRight"
+          delay="1.2s"
+        >
+          <div className="counter-container">
+            <div
+              ref={(el) => (countersRef.current[3] = el)}
+              className="counter"
+            >
+              6
+            </div>
+            <span>Realized projects</span>
           </div>
-          <span>Different countries</span>
-        </div>
-        <div className="counter-container">
-          <div ref={(el) => (countersRef.current[3] = el)} className="counter">
-            6
+        </ScrollAnimation>
+
+        <ScrollAnimation
+          animateIn="fadeInRight"
+          animateOut="fadeOutRight"
+          delay="1.5s"
+        >
+          <div className="counter-container">
+            <div
+              ref={(el) => (countersRef.current[4] = el)}
+              className="counter"
+            >
+              15,000
+            </div>
+            <span>Sqm designed</span>
           </div>
-          <span>Realized projects</span>
-        </div>
-        <div className="counter-container">
-          <div ref={(el) => (countersRef.current[4] = el)} className="counter">
-            15,000
-          </div>
-          <span>Sqm designed</span>
-        </div>
+        </ScrollAnimation>
       </div>
     </section>
   );

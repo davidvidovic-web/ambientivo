@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import "./ProjectFlow.css";
+import ScrollAnimation from "react-animate-on-scroll";
+import "animate.css/animate.compat.css";
 
 const ProjectFlow = () => {
   const [selectedCard, setSelectedCard] = useState("c1");
@@ -9,42 +11,46 @@ const ProjectFlow = () => {
     <>
       <div style={{ backgroundColor: "#eeeae0", padding: "20px" }}>
         <section className="project-flow">
-          <h2>Project Flow</h2>
-          <p>
-            Our Project Flow ensures a seamless and efficient interior design
-            experience, encompassing:
-          </p>
-          <Wrapper>
-            <Container>
-              {cards.map((card, index) => (
-                <React.Fragment key={card.id}>
-                  <input
-                    type="radio"
-                    name="slide"
-                    id={card.id}
-                    checked={selectedCard === card.id}
-                    onChange={() => setSelectedCard(card.id)}
-                    style={{ display: "none" }}
-                  />
-                  <Card
-                    htmlFor={card.id}
-                    className="card"
-                    selected={selectedCard === card.id}
-                    background={card.background}
-                  >
-                    <Row>
-                      <Icon>{index + 1}</Icon>
-                      <Description selected={selectedCard === card.id}>
-                        <img src={card.icon}></img>
-                        <h4>{card.title}</h4>
-                        <p>{card.description}</p>
-                      </Description>
-                    </Row>
-                  </Card>
-                </React.Fragment>
-              ))}
-            </Container>
-          </Wrapper>
+          <ScrollAnimation animateIn="fadeInLeft" animateOut="fadeOutLeft">
+            <h2>Project Flow</h2>
+            <p>
+              Our Project Flow ensures a seamless and efficient interior design
+              experience, encompassing:
+            </p>
+          </ScrollAnimation>
+          <ScrollAnimation animateIn="fadeInRight" animateOut="fadeOutRight">
+            <Wrapper>
+              <Container>
+                {cards.map((card, index) => (
+                  <React.Fragment key={card.id}>
+                    <input
+                      type="radio"
+                      name="slide"
+                      id={card.id}
+                      checked={selectedCard === card.id}
+                      onChange={() => setSelectedCard(card.id)}
+                      style={{ display: "none" }}
+                    />
+                    <Card
+                      htmlFor={card.id}
+                      className="card"
+                      selected={selectedCard === card.id}
+                      background={card.background}
+                    >
+                      <Row>
+                        <Icon>{index + 1}</Icon>
+                        <Description selected={selectedCard === card.id}>
+                          <img src={card.icon}></img>
+                          <h4>{card.title}</h4>
+                          <p>{card.description}</p>
+                        </Description>
+                      </Row>
+                    </Card>
+                  </React.Fragment>
+                ))}
+              </Container>
+            </Wrapper>
+          </ScrollAnimation>
         </section>
       </div>
     </>

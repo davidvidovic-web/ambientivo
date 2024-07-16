@@ -9,6 +9,8 @@ import Footer from "../../Footer/Footer";
 import LineAnimation from "../../Line/Line";
 import { Line } from "three";
 import { Link } from "react-router-dom";
+import ScrollAnimation from "react-animate-on-scroll";
+import "animate.css/animate.compat.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -123,18 +125,20 @@ const Portfolio = () => {
                         <Link
                           className="nav__link portflio_link"
                           target="_self"
-                          to={`/projects/${project.slug}`} 
+                          to={`/projects/${project.slug}`}
                         >
                           See more
                         </Link>
                       </section>
                     </section>
                     <aside className="card__aside">
-                      <img
-                        className="js-image"
-                        src={project.featuredImage.node.sourceUrl}
-                        alt={`Card ${index + 1}`}
-                      />
+                      <ScrollAnimation animateIn="fadeInRight" animateOut="fadeOutRight">
+                        <img
+                          className="js-image"
+                          src={project.featuredImage.node.sourceUrl}
+                          alt={`Card ${index + 1}`}
+                        />
+                      </ScrollAnimation>
                     </aside>
                   </article>
                 </li>
