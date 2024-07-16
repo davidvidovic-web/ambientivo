@@ -9,26 +9,27 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("message", message);
+    // Construct the query string
+    const queryString = new URLSearchParams({
+      name,
+      email,
+      message,
+    }).toString();
 
     try {
       const response = await fetch(
-        "https://ambientivo.com/wp-json/custom/v1/submit-form",
+        `https://ambientivo.com/wp-json/custom/v1/submit-form?${queryString}`,
         {
-          method: "POST",
-          body: formData,
-          mode: "no-cors", // Adding no-cors mode
+          method: "GET",
         }
       );
 
-      // You won't be able to read the response status or body in no-cors mode
+      const result = await response.json();
+
       if (response.ok) {
         setStatus("Form submitted successfully.");
       } else {
-        setStatus("Form submission failed.");
+        setStatus(`Form submission failed: ${result.message}`);
       }
     } catch (error) {
       setStatus(`Form submission failed: ${error.message}`);
