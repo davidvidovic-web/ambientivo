@@ -11,6 +11,7 @@ import ResponsivePortfolio from "./components/Pages/Portfolio/ResponsivePortfoli
 import About from "./components/Pages/About/About.jsx";
 import Contact from "./components/Pages/Contact/Contact.jsx";
 import SinglePage from "./components/Pages/Single/SinglePage.jsx";
+import ScrollToTop from "./components/ScrollTop/ScrollTop.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,13 +40,13 @@ const router = createBrowserRouter([
   },
 ]);
 
-
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <main>
-        <RouterProvider router={router}></RouterProvider>
+        <RouterProvider router={router}>
+          <ScrollToTop />
+        </RouterProvider>
         <Cursor />
       </main>
     </ApolloProvider>
