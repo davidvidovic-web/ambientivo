@@ -15,7 +15,7 @@ import "animate.css/animate.compat.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const GET_POST = gql`
-  query Slider {
+  query Portfolio {
     projects(
       where: { orderby: { field: DATE, order: DESC }, status: PUBLISH }
     ) {

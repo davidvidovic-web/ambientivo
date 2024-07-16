@@ -1,92 +1,57 @@
-import React, { useState } from "react";
-import "./Form.css";
-import Button from "../Button/Button";
+import React, { useState } from 'react';
 
-const MyForm = () => {
-  const [formData, setFormData] = useState({
-    text: "",
-    email: "",
-    textarea: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+const ContactForm = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('message', message);
+
     try {
-      const response = await fetch(
-        "https://your-wordpress-site.com/wp-json/contact-form-7/v1/contact-forms/YOUR_FORM_ID/feedback",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch('https://ambientivo.com/wp-json/custom/v1/submit-form', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
 
       if (response.ok) {
-        const data = await response.json();
-        console.log("Form submitted successfully:", data);
+        setStatus('Form submitted successfully.');
       } else {
-        console.error("Form submission error:", response.statusText);
+        setStatus(`Form submission failed: ${result.message}`);
       }
     } catch (error) {
-      console.error("Form submission error:", error);
+      setStatus(`Form submission failed: ${error.message}`);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="text">Please leave your</label>
-        <input
-          required
-          type="text"
-          id="text"
-          name="text"
-          value={formData.text}
-          onChange={handleChange}
-          placeholder="Name and surname"
-        />
-        <span>,</span>
-      </div>
-      <div>
-        <label htmlFor="email"></label>
-        <input
-          required
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Your email"
-        />
-        <span>and</span>
-      </div>
-      <div>
-        <label htmlFor="textarea">feel free to leave us a</label>
-        <textarea
-          id="textarea"
-          name="textarea"
-          value={formData.textarea}
-          onChange={handleChange}
-          placeholder="Message"
-          rows='1'
-        ></textarea>
-      </div>
-      <div>
-        <Button text="Contact us" type="submit"></Button>
-      </div>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Name:</label>
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+        </div>
+        <div>
+          <label>Email:</label>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        </div>
+        <div>
+          <label>Message:</label>
+          <textarea value={message} onChange={(e) => setMessage(e.target.value)} required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      {status && <p>{status}</p>}
+    </div>
   );
 };
 
-export default MyForm;
+export default ContactForm;

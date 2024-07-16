@@ -9,7 +9,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.compat.css";
 
 const GET_POST = gql`
-  query Slider {
+  query Portfolio {
     projects(
       where: { orderby: { field: DATE, order: DESC }, status: PUBLISH }
     ) {
