@@ -1,4 +1,14 @@
 import React, { useState } from "react";
+import { useMutation, gql } from "@apollo/client";
+
+const SEND_EMAIL_MUTATION = gql`
+  mutation SendEmail($name: String!, $email: String!, $message: String!) {
+    sendEmail(input: { name: $name, email: $email, message: $message }) {
+      success
+      message
+    }
+  }
+`;
 
 const ContactForm = () => {
   const [name, setName] = useState("");
@@ -6,34 +16,34 @@ const ContactForm = () => {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Construct the query string
-    const queryString = new URLSearchParams({
-      name,
-      email,
-      message,
-    }).toString();
-
-    try {
-      const response = await fetch(
-        `https://ambientivo.com/wp-json/custom/v1/submit-form?${queryString}`,
-        {
-          method: "GET",
-        }
-      );
-
-      const result = await response.json();
-
-      if (response.ok) {
+  const [sendEmail, { loading, error }] = useMutation(SEND_EMAIL_MUTATION, {
+    onError: (error) => {
+      setStatus(`Form submission failed: ${error.message}`);
+    },
+    onCompleted: (data) => {
+      if (data.sendEmail.success) {
         setStatus("Form submitted successfully.");
       } else {
-        setStatus(`Form submission failed: ${result.message}`);
+        setStatus(`Form submission failed: ${data.sendEmail.message}`);
       }
-    } catch (error) {
-      setStatus(`Form submission failed: ${error.message}`);
-    }
+    },
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    sendEmail({
+      variables: {
+        name,
+        email,
+        message,
+      },
+    });
+
+    // Clear form fields after submission (optional)
+    setName("");
+    setEmail("");
+    setMessage("");
   };
 
   return (
@@ -65,9 +75,12 @@ const ContactForm = () => {
             required
           ></textarea>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={loading}>
+          Submit
+        </button>
       </form>
       {status && <p>{status}</p>}
+      {error && <p>Error: {error.message}</p>}
     </div>
   );
 };
