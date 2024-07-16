@@ -1,0 +1,162 @@
+footer {
+  background: rgb(138 129 111);
+}
+
+footer p,
+footer span,
+footer h3,
+footer a {
+  color: #fff;
+  margin: 0;
+}
+
+footer a {
+  font-size: 20px;
+}
+
+footer section {
+  display: flex;
+  flex-direction: column;
+}
+
+.upperFooter {
+  display: flex;
+  padding-top: 5em;
+  justify-content: space-between;
+}
+
+.upperFooter > div {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.upperFooter > div:first-of-type {
+  width: 50%;
+}
+
+.upperFooter h3 {
+  font-weight: normal;
+}
+
+.upperFooter > div:first-of-type {
+  align-items: flex-start;
+}
+
+footer:hover ~ .cursor > div:first-of-type::after,
+footer:hover ~ .cursor > div:first-of-type::before {
+  background: #fff;
+}
+
+.upperFooter > div > div {
+  display: flex;
+  margin-right: 30px;
+}
+
+.upperFooter .logo {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.animation-container {
+  width: 40px;
+  height: 40px;
+}
+
+.lowerFooter {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.impressum {
+  display: flex;
+  gap: 25px;
+}
+
+.impressum .nav__link {
+  font-size: 16px;
+}
+
+hr {
+  width: 100%;
+  margin: 80px 0 20px 0;
+  border: 1px solid #e0e0e063;
+}
+
+.upperFooter > div:nth-child(2) {
+  align-items: center;
+}
+
+.upperFooter > div:nth-child(2) span {
+  width: 100%;
+}
+
+div.upperFooter > div:nth-child(2) > a {
+  visibility: hidden;
+}
+
+.copyright {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.copyright .dev {
+  font-size: 1em;
+}
+
+footer:hover ~ .cursor > div:first-of-type::after,
+footer:hover ~ .cursor > div:first-of-type::before {
+  background: #fff !important;
+}
+
+@media only screen and (max-width: 450px) {
+  .upperFooter {
+    flex-direction: column;
+  }
+
+  .upperFooter > div {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  div.upperFooter > div:nth-child(3) {
+    margin-top: 50px;
+  }
+
+  .lowerFooter {
+    flex-direction: column-reverse;
+  }
+
+  .impressum {
+    justify-content: center;
+  }
+
+  .copyright-desktop {
+    display: none;
+  }
+
+  .copyright-mobile {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .copyright-mobile > div:nth-child(2) {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 451px) {
+  .copyright-desktop {
+    display: block;
+  }
+
+  .copyright-mobile {
+    display: none;
+  }
+}

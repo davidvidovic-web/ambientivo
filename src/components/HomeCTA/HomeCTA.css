@@ -1,0 +1,347 @@
+.home-cta {
+  width: 100%;
+  max-width: 100%;
+  padding: 5em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  background: #eeeae0;
+  /* margin: 5em 0; */
+  /* margin-top: 10em; */
+}
+
+.home-cta > section {
+  max-width: 1200px;
+  padding: 0 3em;
+}
+
+.home-cta > section > div {
+  height: 100%;
+  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4em 0 !important;
+}
+
+.home-cta h3,
+.home-cta h5 {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.home-cta h3 {
+  font-family: "Urbanist", sans-serif;
+  font-size: 3em;
+  margin-bottom: 1em;
+}
+
+.home-cta h5 {
+  margin-bottom: 4em;
+  font-size: 1.35em;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.home-cta h5 span {
+  font-size: 1.25em;
+}
+
+.ambientivo-dark-button.ambientivo-dark-html--link {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  width: auto;
+  margin: 0;
+  font-family: "Urbanist", sans-serif;
+  font-size: 11px;
+  line-height: 2.5em;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  border-radius: 0;
+  outline: 0;
+  transition: color 0.2s ease-out, background-color 0.2s ease-out,
+    border-color 0.2s ease-out;
+  padding: 11px 51px 10px;
+}
+
+.ambientivo-dark-button.ambientivo-dark-size--small {
+  padding: 11px 30px 10px;
+}
+
+.ambientivo-dark-button.ambientivo-dark-size--large {
+  padding: 12px 55px;
+}
+
+.ambientivo-dark-button.ambientivo-dark-size--full {
+  width: 100%;
+  text-align: center;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--filled.ambientivo-dark-html--link {
+  color: #111;
+  background-color: #111;
+  border: 1px solid transparent;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--filled.ambientivo-dark-html--link:hover {
+  color: #fff;
+  background-color: transparent;
+  border-color: #111;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined {
+  color: #111;
+  background-color: transparent;
+  border: 1px solid #b3b3b3;
+  font-weight: bold;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner {
+  position: absolute;
+  color: #111;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner:after,
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner:before {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: currentColor;
+  transition: 0.2s ease-out;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner:before {
+  width: 10px;
+  height: 1px;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner:after {
+  width: 1px;
+  height: 10px;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner.ambientivo-dark--top-left {
+  top: 0;
+  left: 0;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner.ambientivo-dark--top-left:before {
+  top: -1px;
+  left: -11px;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner.ambientivo-dark--top-left:after {
+  top: -11px;
+  left: -1px;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner.ambientivo-dark--top-right {
+  top: 0;
+  right: 0;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner.ambientivo-dark--top-right:before {
+  top: -1px;
+  left: 1px;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner.ambientivo-dark--top-right:after {
+  top: -11px;
+  left: 0;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner.ambientivo-dark--bottom-left {
+  bottom: 0;
+  left: 0;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner.ambientivo-dark--bottom-left:before {
+  top: 0;
+  left: -11px;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner.ambientivo-dark--bottom-left:after {
+  top: 1px;
+  left: -1px;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner.ambientivo-dark--bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner.ambientivo-dark--bottom-right:before {
+  top: 0;
+  left: 1px;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-corner.ambientivo-dark--bottom-right:after {
+  top: 1px;
+  left: 0;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-btn-line {
+  position: absolute;
+  transition: transform 0.35s ease-out;
+  background-color: currentColor;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-btn-line.ambientivo-dark-btn-line--top {
+  left: -1px;
+  top: -1px;
+  height: 1px;
+  width: calc(100% + 2px);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-btn-line.ambientivo-dark-btn-line--right {
+  right: -1px;
+  bottom: -1px;
+  width: 1px;
+  height: calc(100% + 2px);
+  transform: scaleY(0);
+  transform-origin: center bottom;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-btn-line.ambientivo-dark-btn-line--bottom {
+  right: -1px;
+  bottom: -1px;
+  height: 1px;
+  width: calc(100% + 2px);
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined
+  .ambientivo-dark-m-btn-line.ambientivo-dark-btn-line--left {
+  left: -1px;
+  top: -1px;
+  width: 1px;
+  height: calc(100% + 2px);
+  transform: scaleY(0);
+  transform-origin: center top;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined:hover
+  .ambientivo-dark-m-btn-line.ambientivo-dark-btn-line--bottom,
+.ambientivo-dark-button.ambientivo-dark-layout--outlined:hover
+  .ambientivo-dark-m-btn-line.ambientivo-dark-btn-line--top {
+  transform: scaleX(1);
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--outlined:hover
+  .ambientivo-dark-m-btn-line.ambientivo-dark-btn-line--left,
+.ambientivo-dark-button.ambientivo-dark-layout--outlined:hover
+  .ambientivo-dark-m-btn-line.ambientivo-dark-btn-line--right {
+  transform: scaleY(1);
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--textual {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 !important;
+  color: #111;
+  background-color: transparent;
+  border: 0;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--textual
+  .ambientivo-dark-m-text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--textual:after {
+  content: "";
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 1px;
+  bottom: 5px;
+  background-color: currentColor;
+  transition: width 0.2s ease-out;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--textual.ambientivo-dark-underline--center {
+  align-items: center;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--textual.ambientivo-dark-underline--right {
+  align-items: flex-end;
+}
+
+.ambientivo-dark-button.ambientivo-dark-layout--textual:hover:after {
+  width: 100%;
+}
+
+.home-cta .ambientivo-button.ambientivo-layout--outlined {
+  color: #111;
+  border: 1px solid #b9b9b9;
+}
+
+.home-cta:hover ~ .cursor > div:first-of-type::after,
+.home-cta:hover ~ .cursor > div:first-of-type::before {
+  background: #111;
+}
+
+.home-cta .ambientivo-button.ambientivo-layout--outlined .ambientivo-m-corner {
+  color: #111;
+}
+
+@media only screen and (max-width: 450px) {
+  .home-cta {
+    padding: 2em 0;
+  }
+  .home-cta > section {
+    padding: 3em 2em;
+    display: flex;
+    margin: 0;
+    max-width: 100% !important;
+  }
+  .home-cta h3 {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .home-cta h5 {
+    flex-direction: column;
+  }
+
+  .ambientivo-dark-button.ambientivo-dark-layout--outlined {
+    padding: 1.5em !important;
+  }
+
+  .home-cta a {
+    margin-bottom: 30px;
+  }
+}

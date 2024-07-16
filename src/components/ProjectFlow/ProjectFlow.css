@@ -1,0 +1,44 @@
+.project-flow {
+  height: 100vh;
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-flow h2 {
+  font-size: 8em;
+  font-family: "Urbanist", sans-serif;
+  margin: 0;
+}
+
+.project-flow p {
+  margin-top: 15px;
+  font-size: 1.3em;
+}
+
+.project-flow h4 {
+  font-size: 1.5em;
+  margin: 0;
+}
+.project-flow .card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 540px) {
+  section.project-flow {
+    max-width: 100% !important;
+  }
+
+  .project-flow h2 {
+    font-size: 5em;
+  }
+
+  .project-flow {
+    height: fit-content;
+    max-width: 100%;
+    padding: 0;
+  }
+}

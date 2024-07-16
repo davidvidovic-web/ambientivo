@@ -1,0 +1,14 @@
+.section__wrapper {
+  position: relative;
+  height: 50vh;
+  margin-top: 10vh;
+}
+
+.section__line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 5px;
+  height: vh;
+  background-color: black;
+}

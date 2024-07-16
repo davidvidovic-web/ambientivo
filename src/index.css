@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Courier New", Courier, monospace;
+  src: url(/public/fonts/courier.woff2);
+}
+
+body {
+  position: relative;
+  font-family: "Courier New", Courier, monospace;
+}
+
+@media only screen and (max-width: 1200px) {
+  section {
+    max-width: calc(100vw - 5em) !important;
+  }
+
+  section.portfolio {
+    max-width: 100% !important;
+  }
+}

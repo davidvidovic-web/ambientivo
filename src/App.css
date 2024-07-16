@@ -1,0 +1,67 @@
+body {
+  padding: 0;
+  margin: 0;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+html {
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+@font-face {
+  font-family: "Urbanist-Light";
+  src: url(./assets/fonts/Urbanist-Regular.woff2);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Urbanist-Medium";
+  src: url(./assets/fonts/Urbanist-Medium.woff2);
+  font-weight: medium;
+}
+
+@font-face {
+  font-family: "Urbanist-Heavy";
+  src: url(./assets/fonts/Urbanist-Bold.woff2);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Bebas";
+  src: url(./assets/fonts/BebasNeue-Regular.woff2);
+  font-weight: normal;
+}
+
+section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cursor > div {
+  z-index: 99999999999999 !important;
+}
+
+.cursor > div:first-of-type::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 25px;
+  background: #111;
+  transform: rotate(45deg);
+}
+
+.cursor > div:first-of-type::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 25px;
+  background: #111;
+  transform: rotate(-45deg);
+}
+
+section {
+  padding: 0 2em;
+}
