@@ -1,4 +1,4 @@
-import Lottie from "react-Lottie";
+import Lottie from "react-lottie";
 import { useState } from "react";
 import animationData from "./instagram.json";
 
