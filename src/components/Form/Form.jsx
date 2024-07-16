@@ -111,7 +111,7 @@ const ContactForm = () => {
           ></textarea>
         </div>
         <div>
-          <Button text="Contact us" type="submit" disabled={loading}></Button>
+          <Button text="Contact us" onclick={{handleSubmit}} type="submit" disabled={loading}></Button>
         </div>
       </form>
       {status && <p>{status}</p>}
