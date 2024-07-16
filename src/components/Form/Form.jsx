@@ -65,15 +65,8 @@ const ContactForm = () => {
         from: formData.email,
         subject: `New message from ${formData.text}`,
         body: formData.textarea,
-        clientMutationId: "david",
+        clientMutationId: "test",
       },
-    });
-
-    // Clear form fields after submission (optional)
-    setFormData({
-      text: "",
-      email: "",
-      textarea: "",
     });
   };
 
