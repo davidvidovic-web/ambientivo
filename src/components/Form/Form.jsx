@@ -114,14 +114,15 @@ const ContactForm = () => {
           <button
             className="ambientivo-shortcode ambientivo-m  ambientivo-button ambientivo-layout--outlined   ambientivo-html--link"
             type="submit"
+            style={{ color: "#111" }}
             disabled={loading}
           >
             Contact us
           </button>
         </div>
       </form>
-      {status && <p>{status}</p>}
-      {error && <p>Error: {error.message}</p>}
+      {status && <p style={{ textAlign: "center" }}>Thank you for your submittion, we will contact you shortly!</p>}
+      {error && <p style={{ textAlign: "center" }}>Error: {error.message}</p>}
     </div>
   );
 };
