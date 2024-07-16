@@ -4,7 +4,7 @@ import "./WordRotator.css";
 const WordRotator = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const words = ["Bonjour", "Привет", "Hallo", "Zdravo", "Hello"];
+  const words = ["Bonjour", "Привет", "Hello", "Hallo", "Zdravo" ];
 
   useEffect(() => {
     const totalWordsToRotate = words.length;

@@ -18,7 +18,6 @@ const GET_POST = gql`
         }
         slug
         title
-        excerpt
       }
     }
   }

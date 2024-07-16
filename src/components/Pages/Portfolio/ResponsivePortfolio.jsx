@@ -17,7 +17,7 @@ const ResponsivePortfolio = () => {
   }, []);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div></div>}>
       {isMobile ? <PortfolioMobile /> : <Portfolio />}
     </Suspense>
   );

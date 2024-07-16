@@ -41,10 +41,6 @@ function Slide({ sliderItem = [], index }) {
             <h1 className="slideshow__slide-caption-title">
               {sliderItem[1] || "Loading..."}
             </h1>
-            <h4
-              style={{ width: "80%", fontSize: '1.3em', margin: '2.2em, 0' }}
-              dangerouslySetInnerHTML={{ __html: sliderItem[3] }}
-            ></h4>
             <a
               target="_self"
               className="slideshow__slide-caption-subtitle -load o-hsub -link"
