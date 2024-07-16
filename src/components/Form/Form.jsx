@@ -118,6 +118,9 @@ const ContactForm = () => {
             type="submit"
             disabled={loading}
           ></Button>
+          <button type="submit" disabled={loading}>
+            Contact us
+          </button>
         </div>
       </form>
       {status && <p>{status}</p>}
