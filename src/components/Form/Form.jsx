@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 import Button from "../Button/Button";
-import './Form.css'
+import "./Form.css";
 
 const SEND_EMAIL_MUTATION = gql`
   mutation SendEmail(
@@ -111,7 +111,13 @@ const ContactForm = () => {
           ></textarea>
         </div>
         <div>
-          <Button text="Contact us" onclick={{handleSubmit}} type="submit" disabled={loading}></Button>
+          <Button
+            text="Contact us"
+            onClick={handleSubmit}
+            style={{ cursor: "pointer" }}
+            type="submit"
+            disabled={loading}
+          ></Button>
         </div>
       </form>
       {status && <p>{status}</p>}
