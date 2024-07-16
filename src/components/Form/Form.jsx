@@ -1,31 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const ContactForm = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [status, setStatus] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('message', message);
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("message", message);
 
     try {
-      const response = await fetch('https://ambientivo.com/wp-json/custom/v1/submit-form', {
-        method: 'POST',
-        body: formData,
-      });
+      const response = await fetch(
+        "https://ambientivo.com/wp-json/custom/v1/submit-form",
+        {
+          method: "POST",
+          body: formData,
+          mode: "no-cors", // Adding no-cors mode
+        }
+      );
 
-      const result = await response.json();
-
+      // You won't be able to read the response status or body in no-cors mode
       if (response.ok) {
-        setStatus('Form submitted successfully.');
+        setStatus("Form submitted successfully.");
       } else {
-        setStatus(`Form submission failed: ${result.message}`);
+        setStatus("Form submission failed.");
       }
     } catch (error) {
       setStatus(`Form submission failed: ${error.message}`);
@@ -37,15 +40,29 @@ const ContactForm = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Name:</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
         </div>
         <div>
           <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
         <div>
           <label>Message:</label>
-          <textarea value={message} onChange={(e) => setMessage(e.target.value)} required></textarea>
+          <textarea
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+          ></textarea>
         </div>
         <button type="submit">Submit</button>
       </form>
