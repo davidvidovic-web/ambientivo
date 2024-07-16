@@ -44,7 +44,7 @@ const ProjectFlow = () => {
                   background={card.background}
                 >
                   <Row>
-                    <Icon>{index + 1}</Icon>
+                    <Icon selected={selectedCard === card.id}>{index + 1}</Icon>
                     <Description selected={selectedCard === card.id}>
                       <img
                         style={{ width: "100px", height: "100px" }}
@@ -71,7 +71,7 @@ const cards = [
     id: "c1",
     title: "First meeting",
     description:
-      "Getting to know the client, his needs, wishes, aesthetic aspirations, coordinating the timeline of the potential project",
+      "Getting to know the client, his needs, wishes, aesthetic aspirations, coordinating the timeline of the potential projec",
     background: "./images/components/ProjectFlow/bg.jpg",
     icon: "./images/components/ProjectFlow/1.svg",
   },
@@ -87,7 +87,7 @@ const cards = [
     id: "c3",
     title: "First 3D input",
     description:
-      "Correction of the conclusions from the last meeting and the first 3D input (draft visualisation)",
+      "Correction of the conclusions from the last meeting and the first 3d input (draft visualisation)",
     background: "./images/components/ProjectFlow/bg.jpg",
     icon: "./images/components/ProjectFlow/3.svg",
   },
@@ -152,11 +152,12 @@ const Card = styled.label`
   display: flex;
   position: relative;
   align-items: flex-end;
-  transition: height 0.3s; // Adjusted to animate height only
+  transition: height 0.3s, padding 0.3s; // Include padding in transition
   background-image: url(${(props) => props.background});
   background-color: #223;
-  padding: 20px;
+  margin: 20px;
   height: ${(props) => (props.selected ? "auto" : "100px")};
+  padding: ${(props) => (props.selected ? "2em 0" : "0")}; // Conditional padding
 `;
 
 const Row = styled.div`
@@ -178,6 +179,10 @@ const Icon = styled.div`
   align-items: center;
   margin: 15px;
   border: 1px solid;
+  position: absolute;
+  left: 0;
+  bottom: ${(props) => (props.selected ? "-30px" : "10px")};
+  transition: bottom 0.3s;
 `;
 
 const Description = styled.div`
@@ -189,7 +194,6 @@ const Description = styled.div`
   color: #111;
   opacity: ${(props) => (props.selected ? 1 : 0)};
   transition: opacity 0.3s;
-  width: 100%;
   height: auto;
   padding: 10px;
 `;

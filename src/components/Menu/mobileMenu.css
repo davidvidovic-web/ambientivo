@@ -13,6 +13,7 @@
   top: 0px;
   right: 0px;
   left: 0;
+  bottom: 0;
   background: #fff;
   height: 100%;
 }
@@ -212,4 +213,10 @@ ul.bm-item li {
 
 .is-open-true .hamburger-react > div {
   background-color: #111 !important;
+}
+
+@media only screen and (max-width: 450px) {
+  ul.bm-item {
+    height: 90%;
+  }
 }

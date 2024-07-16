@@ -29,6 +29,7 @@
 @media only screen and (max-width: 540px) {
   .about {
     height: fit-content;
+    padding: 5em 30px;
   }
   .about .container {
     flex-direction: column;

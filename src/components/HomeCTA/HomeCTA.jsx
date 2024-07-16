@@ -1,4 +1,5 @@
 import Button from "../Button/Button";
+import { Link } from "react-router-dom";
 import "./HomeCTA.css";
 import WordRotator from "../WordRotator/WordRotator";
 function HomeCTA() {
@@ -11,9 +12,9 @@ function HomeCTA() {
             <span>Don't hesitate to say: </span>
             <WordRotator></WordRotator>
           </h5>
-          <a href="/contact">
+          <Link to="/contact">
             <Button text="Let's talk"></Button>
-          </a>
+          </Link>
           <span className="ambientivo-dark-m-corner ambientivo-dark--top-left"></span>
           <span className="ambientivo-dark-m-corner ambientivo-dark--top-right"></span>
           <span className="ambientivo-dark-m-corner ambientivo-dark--bottom-left"></span>
