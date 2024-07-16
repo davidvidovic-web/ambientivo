@@ -4,7 +4,7 @@ import "./Button.css";
 
 function Button({ text, type }) {
   return (
-    <span
+    <Button
       type={type}
       className="ambientivo-shortcode ambientivo-m  ambientivo-button ambientivo-layout--outlined   ambientivo-html--link"
     >
@@ -17,7 +17,7 @@ function Button({ text, type }) {
       <span className="ambientivo-m-btn-line ambientivo-btn-line--right"></span>
       <span className="ambientivo-m-btn-line ambientivo-btn-line--bottom"></span>
       <span className="ambientivo-m-btn-line ambientivo-btn-line--left"></span>
-    </span>
+    </Button>
   );
 }
 
