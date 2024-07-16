@@ -111,14 +111,11 @@ const ContactForm = () => {
           ></textarea>
         </div>
         <div>
-          <Button
-            text="Contact us"
-            onClick={handleSubmit}
-            style={{ cursor: "pointer" }}
+          <button
+            className="ambientivo-shortcode ambientivo-m  ambientivo-button ambientivo-layout--outlined   ambientivo-html--link"
             type="submit"
             disabled={loading}
-          ></Button>
-          <button type="submit" disabled={loading}>
+          >
             Contact us
           </button>
         </div>
