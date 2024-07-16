@@ -2,9 +2,24 @@ import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 
 const SEND_EMAIL_MUTATION = gql`
-  mutation SendEmail($name: String!, $email: String!, $message: String!) {
-    sendEmail(input: { name: $name, email: $email, message: $message }) {
-      success
+  mutation SendEmail(
+    $to: String!
+    $from: String!
+    $subject: String!
+    $body: String!
+    $clientMutationId: String!
+  ) {
+    sendEmail(
+      input: {
+        to: $to
+        from: $from
+        subject: $subject
+        body: $body
+        clientMutationId: $clientMutationId
+      }
+    ) {
+      origin
+      sent
       message
     }
   }
@@ -21,7 +36,7 @@ const ContactForm = () => {
       setStatus(`Form submission failed: ${error.message}`);
     },
     onCompleted: (data) => {
-      if (data.sendEmail.success) {
+      if (data.sendEmail.sent) {
         setStatus("Form submitted successfully.");
       } else {
         setStatus(`Form submission failed: ${data.sendEmail.message}`);
@@ -34,9 +49,11 @@ const ContactForm = () => {
 
     sendEmail({
       variables: {
-        name,
-        email,
-        message,
+        to: email, // You can adjust this if needed
+        from: email, // Change this to the desired sender email
+        subject: `New message from ${name}`,
+        body: message,
+        clientMutationId: "test", // Change as necessary
       },
     });
 
