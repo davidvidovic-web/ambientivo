@@ -3,16 +3,14 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import SinglePost from "./components/Pages/Single/SinglePost.jsx";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
 import { ApolloProvider } from "@apollo/client";
 import client from "./components/Apollo/apollo";
 import Cursor from "./components/Cursor/Cursor.jsx";
-import ResponsivePortfolio from "./components/Pages/Portfolio/ResponsivePortfolio.jsx"; // Import the responsive component
+import Portfolio from "./components/Pages/Portfolio/Portfolio.jsx";
 import About from "./components/Pages/About/About.jsx";
 import Contact from "./components/Pages/Contact/Contact.jsx";
 import SinglePage from "./components/Pages/Single/SinglePage.jsx";
-import ScrollToTop from "./components/ScrollTop/ScrollToTop.jsx";
-
 
 const router = createBrowserRouter([
   {
@@ -21,11 +19,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/projects/:slug",
-    element: <SinglePost />,
+    element: (
+      <SinglePost
+        render={(props) => <SinglePost id={props.match.params.slug} />}
+      />
+    ),
   },
   {
     path: "/portfolio",
-    element: <ResponsivePortfolio />, // Use the responsive portfolio component
+    element: <Portfolio />,
   },
   {
     path: "/about",
@@ -37,18 +39,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/page/:slug",
-    element: <SinglePage />,
+    element: (
+      <SinglePage
+        render={(props) => <SinglePage id={props.match.params.id} />}
+      />
+    ),
   },
 ]);
-
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <main>
-        <RouterProvider router={router}>
-          <ScrollToTop />
-        </RouterProvider>
+        <RouterProvider router={router} />
         <Cursor />
       </main>
     </ApolloProvider>

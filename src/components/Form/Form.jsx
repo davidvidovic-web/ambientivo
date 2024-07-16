@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
+import Button from "../Button/Button";
+import './Form.css'
 
 const SEND_EMAIL_MUTATION = gql`
   mutation SendEmail(
@@ -26,9 +28,11 @@ const SEND_EMAIL_MUTATION = gql`
 `;
 
 const ContactForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [formData, setFormData] = useState({
+    text: "",
+    email: "",
+    textarea: "",
+  });
   const [status, setStatus] = useState("");
 
   const [sendEmail, { loading, error }] = useMutation(SEND_EMAIL_MUTATION, {
@@ -44,57 +48,78 @@ const ContactForm = () => {
     },
   });
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     sendEmail({
       variables: {
-        to: email, // You can adjust this if needed
-        from: email, // Change this to the desired sender email
-        subject: `New message from ${name}`,
-        body: message,
-        clientMutationId: "test", // Change as necessary
+        to: "office@ambientivo.com",
+        from: formData.email,
+        subject: `New message from ${formData.text}`,
+        body: formData.textarea,
+        clientMutationId: "david",
       },
     });
 
     // Clear form fields after submission (optional)
-    setName("");
-    setEmail("");
-    setMessage("");
+    setFormData({
+      text: "",
+      email: "",
+      textarea: "",
+    });
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Name:</label>
+          <label htmlFor="text">Please leave your</label>
           <input
+            required
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
+            id="text"
+            name="text"
+            value={formData.text}
+            onChange={handleChange}
+            placeholder="Name and surname"
           />
+          <span>,</span>
         </div>
         <div>
-          <label>Email:</label>
+          <label htmlFor="email"></label>
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             required
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Your email"
           />
+          <span>and</span>
         </div>
         <div>
-          <label>Message:</label>
+          <label htmlFor="textarea">feel free to leave us a</label>
           <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required
+            id="textarea"
+            name="textarea"
+            value={formData.textarea}
+            onChange={handleChange}
+            placeholder="Message"
+            rows="1"
           ></textarea>
         </div>
-        <button type="submit" disabled={loading}>
-          Submit
-        </button>
+        <div>
+          <Button text="Contact us" type="submit" disabled={loading}></Button>
+        </div>
       </form>
       {status && <p>{status}</p>}
       {error && <p>Error: {error.message}</p>}
