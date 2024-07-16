@@ -72,7 +72,7 @@ const ContactForm = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form id="contact" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="text">Please leave your</label>
           <input

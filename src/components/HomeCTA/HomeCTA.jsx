@@ -18,7 +18,7 @@ function HomeCTA() {
             </h5>
           </ScrollAnimation>
           <ScrollAnimation animateIn="fadeInLeft" animateOut="fadeOutLeft">
-            <Link to="/contact">
+            <Link to="/contact#contact">
               <Button text="Let's talk"></Button>
             </Link>
           </ScrollAnimation>
