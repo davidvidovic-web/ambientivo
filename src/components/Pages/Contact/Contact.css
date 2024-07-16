@@ -365,6 +365,7 @@
 @media only screen and (max-width: 450px) {
   .contact {
     padding-top: 3em;
+    /* margin-left: 20px; */
   }
 
   .contact h1 {
@@ -379,6 +380,8 @@
   .contact form > div {
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
   }
 
   form > div:nth-child(1) > span {
@@ -393,5 +396,6 @@
   }
   .contact form > div:last-of-type {
     align-items: center;
+    padding-bottom: 3em;
   }
 }
