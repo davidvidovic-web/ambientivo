@@ -1,6 +1,7 @@
 import Lottie from "react-lottie";
 import { useState } from "react";
 import animationData from "./instagram.json";
+import { Link } from "react-router-dom";
 
 function Instagram() {
   const [stopped, setStopped] = useState(true);
@@ -14,7 +15,8 @@ function Instagram() {
   };
   return (
     <>
-      <div className="animation-container"
+      <div
+        className="animation-container"
         onMouseEnter={() => {
           setStopped(false);
         }}
@@ -22,11 +24,13 @@ function Instagram() {
           setStopped(true);
         }}
       >
-        <Lottie
-          options={defaultOptions}
-          isClickToPauseDisabled
-          isStopped={stopped}
-        />
+        <Link to="https://www.instagram.com/ambientivo">
+          <Lottie
+            options={defaultOptions}
+            isClickToPauseDisabled
+            isStopped={stopped}
+          />
+        </Link>
       </div>
     </>
   );

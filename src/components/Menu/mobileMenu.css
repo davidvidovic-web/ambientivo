@@ -219,4 +219,12 @@ ul.bm-item li {
   ul.bm-item {
     height: 90%;
   }
+
+  .main-menu {
+    width: auto;
+    padding: 20px 5px;
+  }
+  .inner-menu-wrapper {
+    gap: 1em;
+  }
 }

@@ -67,6 +67,9 @@ const SvgLetter = styled.text`
 const ShiningSpan = styled.span`
   color: #fff;
   animation: ${shine} 2s infinite;
+  @media (max-width: 450px) {
+    text-align: center;
+  }
 `;
 
 const LoadingScreen = ({ onAnimationEnd }) => {

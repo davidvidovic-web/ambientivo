@@ -50,7 +50,7 @@
   .single {
     max-width: 1200px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     margin: 0 auto;
     flex-direction: column;
     margin: 10em 0;
@@ -60,5 +60,9 @@
 
   .single figure figure {
     width: 100%;
+  }
+
+  .main-menu {
+    width: calc(100% - 10px);
   }
 }
