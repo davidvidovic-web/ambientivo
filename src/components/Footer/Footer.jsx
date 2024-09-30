@@ -48,10 +48,12 @@ function Footer() {
               <div className="partners">
                 <span>
                   {" "}
-                  <b>Partners:</b>
+                  <h3>Partners:</h3>
                 </span>{" "}
                 <br></br>
-                <img src="./images/lx_design_studio.png"></img>
+                <a href="https://www.lxdesignstudio.co/">
+                  <img src="./images/lx_design_studio.png"></img>
+                </a>
               </div>
             </div>
           </div>
