@@ -120,6 +120,10 @@ footer:hover ~ .cursor > div:first-of-type::before {
   margin: 0 !important;
 }
 
+.partners img {
+  max-width: 210px;
+}
+
 @media only screen and (max-width: 450px) {
   .upperFooter {
     flex-direction: column;
