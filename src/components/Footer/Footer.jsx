@@ -45,8 +45,12 @@ function Footer() {
                 <Instagram></Instagram>
                 {/* <LinkedIn></LinkedIn> */}
               </div>
-              <div>
-                Partners: <br></br>
+              <div className="partners">
+                <span>
+                  {" "}
+                  <b>Partners:</b>
+                </span>{" "}
+                <br></br>
                 <img src="./images/lx_design_studio.png"></img>
               </div>
             </div>

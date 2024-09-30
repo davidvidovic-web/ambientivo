@@ -113,6 +113,10 @@ footer:hover ~ .cursor > div:first-of-type::before {
   background: #fff !important;
 }
 
+.partners {
+  flex-direction: column;
+}
+
 @media only screen and (max-width: 450px) {
   .upperFooter {
     flex-direction: column;
