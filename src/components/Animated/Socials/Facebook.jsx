@@ -1,6 +1,6 @@
 import Lottie from "react-lottie";
 import { useState } from "react";
-import animationData from "./facebook.lottie";
+import animationData from "./facebook.json";
 import { Link } from "react-router-dom";
 
 function Facebook() {
