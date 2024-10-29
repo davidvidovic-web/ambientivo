@@ -16,7 +16,7 @@ function Facebook() {
   return (
     <>
       <div
-        className="animation-container"
+        className="animation-container facebook"
         onMouseEnter={() => {
           setStopped(false);
         }}

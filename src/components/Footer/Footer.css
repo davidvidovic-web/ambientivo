@@ -53,6 +53,7 @@ footer:hover ~ .cursor > div:first-of-type::before {
 .upperFooter > div > div {
   display: flex;
   margin-right: 30px;
+  align-items: center;
 }
 
 .upperFooter .logo {
@@ -122,6 +123,17 @@ footer:hover ~ .cursor > div:first-of-type::before {
 
 .partners img {
   max-width: 210px;
+}
+
+.facebook {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.facebook > a {
+  height: 100%;
 }
 
 @media only screen and (max-width: 450px) {
