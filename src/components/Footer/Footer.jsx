@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import "./Footer.css";
 import Instagram from "../Animated/Socials/Instagram";
+import Facebook from "../Animated/Socials/Facebook";
 // import LinkedIn from "../Animated/Socials/LinkedIn";
 
 function Footer() {
@@ -43,6 +44,7 @@ function Footer() {
               <h3>Socials</h3>
               <div>
                 <Instagram></Instagram>
+                <Facebook></Facebook>
                 {/* <LinkedIn></LinkedIn> */}
               </div>
               <div className="partners">
