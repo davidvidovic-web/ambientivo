@@ -52,9 +52,9 @@ footer:hover ~ .cursor > div:first-of-type::before {
 
 .upperFooter > div > div {
   display: flex;
-  margin-right: 30px;
   align-items: center;
 }
+
 
 .upperFooter .logo {
   padding: 0 !important;
@@ -117,7 +117,7 @@ footer:hover ~ .cursor > div:first-of-type::before {
 .partners {
   flex-direction: column;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: flex-end !important;
   margin: 0 !important;
 }
 
