@@ -5,6 +5,11 @@ body {
   overflow-x: hidden !important;
 }
 
+body.yarl__no_scroll .cursor > div:first-of-type::before,
+body.yarl__no_scroll .cursor > div:first-of-type::after {
+  background: #fff !important;
+}
+
 html {
   overflow: hidden;
   overflow-y: auto;

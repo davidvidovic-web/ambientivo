@@ -54,7 +54,7 @@ function Footer() {
                 </span>{" "}
                 <br></br>
                 <a href="https://www.lxdesignstudio.co/">
-                  <img src="./images/lx_design_studio.png"></img>
+                  <img src="../images/lx_design_studio.png"></img>
                 </a>
               </div>
             </div>
