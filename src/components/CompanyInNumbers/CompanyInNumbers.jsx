@@ -3,14 +3,39 @@ import "./CompanyInNumbers.css";
 import counterUp from "counterup2";
 import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.compat.css";
+import { gql, useQuery } from "@apollo/client";
+
+// Query matches what works in your GraphQL IDE
+const GET_AMBIENTIVO_COUNTERS = gql`
+  query GetAmbentivoSettings {
+    ambientivo {
+      counters {
+        text
+        number
+      }
+    }
+  }
+`;
 
 function CompanyInNumbers() {
   const countersRef = useRef([]);
-  const [animated, setAnimated] = useState(
-    new Array(5).fill(false) // Create an array of false values for each counter
-  );
+  const { loading, error, data } = useQuery(GET_AMBIENTIVO_COUNTERS);
+  const [animated, setAnimated] = useState([]);
 
+  // FIX: Access the data correctly based on your GraphQL response structure
+  const counters = data?.ambientivo?.counters || [];
+
+  // Initialize animated state when data is loaded
   useEffect(() => {
+    if (counters.length > 0) {
+      setAnimated(new Array(counters.length).fill(false));
+    }
+  }, [counters]);
+
+  // Set up intersection observer for counter animation
+  useEffect(() => {
+    if (loading) return;
+
     const callback = (entries) => {
       entries.forEach((entry) => {
         const el = entry.target;
@@ -23,7 +48,7 @@ function CompanyInNumbers() {
           });
           setAnimated((prevAnimated) => {
             const newAnimated = [...prevAnimated];
-            newAnimated[index] = true; // Set animated state for this counter to true
+            newAnimated[index] = true;
             return newAnimated;
           });
         }
@@ -45,7 +70,39 @@ function CompanyInNumbers() {
         }
       });
     };
-  }, [animated]); // Add animated to the dependency array
+  }, [animated, loading, counters]);
+
+  // Reset refs when counters change
+  useEffect(() => {
+    countersRef.current = countersRef.current.slice(0, counters.length);
+  }, [counters]);
+
+  // If there's an error, use fallback data
+  useEffect(() => {
+    if (error) {
+      console.error("Error fetching counters:", error);
+    }
+  }, [error]);
+
+  // Show loading state
+  if (loading) {
+    return (
+      <section className="company-in-numbers">
+        <div className="loading">Loading counters...</div>
+      </section>
+    );
+  }
+
+  // Use fallback data if there's an error
+  const displayCounters = error
+    ? [
+        { number: 15, text: "Projects" },
+        { number: 4, text: "Different purposes" },
+        { number: 4, text: "Different countries" },
+        { number: 6, text: "Realized projects" },
+        { number: 15000, text: "Sqm designed" },
+      ]
+    : counters;
 
   return (
     <section className="company-in-numbers">
@@ -58,79 +115,24 @@ function CompanyInNumbers() {
       </ScrollAnimation>
 
       <div className="counters">
-        <ScrollAnimation animateIn="fadeInRight" animateOut="fadeOutRight" delay='0.3s'>
-          <div className="counter-container">
-            <div
-              ref={(el) => (countersRef.current[0] = el)}
-              className="counter"
-            >
-              15
+        {displayCounters.map((counter, index) => (
+          <ScrollAnimation
+            key={index}
+            animateIn="fadeInRight"
+            animateOut="fadeOutRight"
+            delay={`${0.3 + index * 0.3}s`}
+          >
+            <div className="counter-container">
+              <div
+                ref={(el) => (countersRef.current[index] = el)}
+                className="counter"
+              >
+                {counter.number}
+              </div>
+              <span>{counter.text}</span>
             </div>
-            <span>Projects</span>
-          </div>
-        </ScrollAnimation>
-        <ScrollAnimation
-          animateIn="fadeInRight"
-          animateOut="fadeOutRight"
-          delay="0.6s"
-        >
-          <div className="counter-container">
-            <div
-              ref={(el) => (countersRef.current[1] = el)}
-              className="counter"
-            >
-              4
-            </div>
-            <span>Different purposes</span>
-          </div>
-        </ScrollAnimation>
-        <ScrollAnimation
-          animateIn="fadeInRight"
-          animateOut="fadeOutRight"
-          delay="0.9s"
-        >
-          <div className="counter-container">
-            <div
-              ref={(el) => (countersRef.current[2] = el)}
-              className="counter"
-            >
-              4
-            </div>
-            <span>Different countries</span>
-          </div>{" "}
-        </ScrollAnimation>
-
-        <ScrollAnimation
-          animateIn="fadeInRight"
-          animateOut="fadeOutRight"
-          delay="1.2s"
-        >
-          <div className="counter-container">
-            <div
-              ref={(el) => (countersRef.current[3] = el)}
-              className="counter"
-            >
-              6
-            </div>
-            <span>Realized projects</span>
-          </div>
-        </ScrollAnimation>
-
-        <ScrollAnimation
-          animateIn="fadeInRight"
-          animateOut="fadeOutRight"
-          delay="1.5s"
-        >
-          <div className="counter-container">
-            <div
-              ref={(el) => (countersRef.current[4] = el)}
-              className="counter"
-            >
-              15,000
-            </div>
-            <span>Sqm designed</span>
-          </div>
-        </ScrollAnimation>
+          </ScrollAnimation>
+        ))}
       </div>
     </section>
   );
