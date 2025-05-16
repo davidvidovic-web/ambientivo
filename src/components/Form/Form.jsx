@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
+import { useTranslation } from "react-i18next";
 import Button from "../Button/Button";
 import "./Form.css";
 
@@ -28,6 +29,7 @@ const SEND_EMAIL_MUTATION = gql`
 `;
 
 const ContactForm = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     text: "",
     email: "",
@@ -37,13 +39,13 @@ const ContactForm = () => {
 
   const [sendEmail, { loading, error }] = useMutation(SEND_EMAIL_MUTATION, {
     onError: (error) => {
-      setStatus(`Form submission failed: ${error.message}`);
+      setStatus(t('form.error', { message: error.message }));
     },
     onCompleted: (data) => {
       if (data.sendEmail.sent) {
-        setStatus("Form submitted successfully.");
+        setStatus(t('form.success'));
       } else {
-        setStatus(`Form submission failed: ${data.sendEmail.message}`);
+        setStatus(t('form.error', { message: data.sendEmail.message }));
       }
     },
   });
@@ -74,7 +76,7 @@ const ContactForm = () => {
     <div>
       <form id="contact" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="text">Please leave your</label>
+          <label htmlFor="text">{t('form.nameLabel')}</label>
           <input
             required
             type="text"
@@ -82,7 +84,7 @@ const ContactForm = () => {
             name="text"
             value={formData.text}
             onChange={handleChange}
-            placeholder="Name and surname"
+            placeholder={t('form.namePlaceholder')}
           />
           <span>,</span>
         </div>
@@ -95,18 +97,18 @@ const ContactForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="Your email"
+            placeholder={t('form.emailPlaceholder')}
           />
-          <span>and</span>
+          <span>{t('form.and')}</span>
         </div>
         <div>
-          <label htmlFor="textarea">feel free to leave us a</label>
+          <label htmlFor="textarea">{t('form.messageLabel')}</label>
           <textarea
             id="textarea"
             name="textarea"
             value={formData.textarea}
             onChange={handleChange}
-            placeholder="Message"
+            placeholder={t('form.messagePlaceholder')}
             rows="1"
           ></textarea>
         </div>
@@ -117,12 +119,12 @@ const ContactForm = () => {
             style={{ color: "#111" }}
             disabled={loading}
           >
-            Contact us
+            {t('form.submitButton')}
           </button>
         </div>
       </form>
-      {status && <p style={{ textAlign: "center" }}>Thank you for your submittion, we will contact you shortly!</p>}
-      {error && <p style={{ textAlign: "center" }}>Error: {error.message}</p>}
+      {status && <p style={{ textAlign: "center" }}>{status}</p>}
+      {error && <p style={{ textAlign: "center" }}>{t('form.error', { message: error.message })}</p>}
     </div>
   );
 };

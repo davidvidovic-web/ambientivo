@@ -1,0 +1,157 @@
+{
+  "loading": "Loading...",
+  "menu": {
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "slider": {
+    "title": "Our Projects"
+  },
+  "footer": {
+    "copyright": "© 2025 Ambientivo. All rights reserved."
+  },
+  "button": {
+    "readMore": "Read more"
+  },
+  "services": {
+    "title": "Our services",
+    "description": "Our interior design agency offers personalized and innovative design solutions, transforming spaces into stylish, functional, and inspiring environments tailored to each client's unique vision and needs.",
+    "items": [
+      {
+        "title": "Concept Design",
+        "description": "Includes a floor plan with proposed furniture layout and realistic 3D visualizations. This service provides a clear spatial concept and aesthetic vision tailored to your needs—ideal for understanding the potential of your space before moving into execution."
+      },
+      {
+        "title": "Concept Design + Technical Documentation",
+        "description": "Includes everything in the Concept Design package, plus a complete set of technical drawings required for project execution. This package ensures your project is ready for implementation, with precise details for contractors and manufacturers."
+      },
+      {
+        "title": "Full Project Coordination ",
+        "description": "Includes Concept Design, Technical Documentation, and complete organization along with supervision of construction work. From the first idea to the final result, we manage the entire process—coordinating all contractors and ensuring the project is executed according to plan and quality standards."
+      },
+      {
+        "title": "Architectural Consultation",
+        "description": "Duration: 60 minutes. An in-depth consultation with the architect to discuss your space, needs, and ideas. Whether you're just starting or refining an existing concept, this session helps define the direction of your project."
+      }
+    ]
+  },
+  "projectFlow": {
+    "title": "Project Flow",
+    "description": "Our Project Flow ensures a seamless and efficient interior design experience, encompassing:",
+    "steps": [
+      {
+        "title": "First meeting",
+        "description": "Getting to know the client, his needs, wishes, aesthetic aspirations, coordinating the timeline of the potential project."
+      },
+      {
+        "title": "Plan delivery",
+        "description": "Presenting the floor plan and discussing it, presenting the mood board and aesthetics in which direction the project would go"
+      },
+      {
+        "title": "First 3D input",
+        "description": "Correction of the conclusions from the last meeting and the first 3d input (draft visualisation)"
+      },
+      {
+        "title": "Delivery of realistic visualisations",
+        "description": "Realistic visualisations show how the space could look with respect to the client's guidelines, discussions about the client's opinion"
+      },
+      {
+        "title": "Final visualisation and presentation",
+        "description": "Changes according to the client's input and finalisation of the 3D appearance"
+      },
+      {
+        "title": "Technical drawings",
+        "description": "Delivery of technical drawings and detailed preparation with craftsmen for the creation of the project"
+      },
+      {
+        "title": "Project realization and supervision",
+        "description": "The best result is certainly when the architect supervises the work of the craftsman and controls the delivered quality"
+      }
+    ]
+  },
+  "companyNumbers": {
+    "loading": "Loading counters...",
+    "meetTheStudio": "Meet the studio",
+    "inNumbers": "in numbers",
+    "projects": "Projects",
+    "differentPurposes": "Different purposes",
+    "differentCountries": "Different countries",
+    "realizedProjects": "Realized projects",
+    "sqmDesigned": "Sqm designed"
+  },
+  "homeCTA": {
+    "title": "Have a project in mind?",
+    "subtitle": "Don't hesitate to say:",
+    "button": "Let's talk"
+  },
+  "footer": {
+    "tagline": "Interior design & architecture atelier",
+    "address": {
+      "street": "71-75 Shelton Street",
+      "area": "Covent Garden",
+      "city": "London",
+      "country": "United Kingdom"
+    },
+    "locations": {
+      "based": "Currently based and working in:",
+      "current": {
+        "france": "France Cote d'Azur",
+        "monaco": "Monaco"
+      },
+      "available": "Also available in:",
+      "other": {
+        "austria": "Austria",
+        "croatia": "Croatia",
+        "bosnia": "Bosnia & Herzegovina"
+      }
+    },
+    "socials": "Socials",
+    "partners": {
+      "title": "Partners"
+    },
+    "copyright": "All rights reserved",
+    "madeBy": "Made by",
+    "privacy": "Privacy & Policy"
+  },
+  "portfolio": {
+    "visualisation": "Visualisation area",
+    "location": "Location",
+    "date": "Date",
+    "seeMore": "See more",
+    "loading": "Loading projects...",
+    "error": "Error loading projects"
+  },
+  "singlePost": {
+    "visualisation": "Visualisation area",
+    "location": "Location",
+    "date": "Date",
+    "copyright": "Copyright",
+    "imageAlt": "{{title}} image {{number}}",
+    "notFound": "Post not found",
+    "loading": "Loading...",
+    "error": "Error loading post"
+  },
+  "contact": {
+    "title": "We are open to collaborations and discussions on any project idea",
+    "subtitle": "Don't hesitate to say:"
+  },
+  "form": {
+    "nameLabel": "Please leave your",
+    "namePlaceholder": "Name and surname",
+    "emailPlaceholder": "Your email",
+    "and": "and",
+    "messageLabel": "feel free to leave us a",
+    "messagePlaceholder": "Message",
+    "submitButton": "Contact us",
+    "success": "Thank you for your submission, we will contact you shortly!",
+    "error": "Error: {{message}}"
+  },
+  "singlePage": {
+    "loading": "Loading page...",
+    "error": "Error: {{message}}",
+    "notFound": "Page not found",
+    "backToHome": "Back to Home"
+  }
+}

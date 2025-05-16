@@ -17,6 +17,15 @@
   margin: 30px 0 50px 0;
 }
 
+.single .acf-fields p {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.single .acf-fields {
+  margin: 50px 0 70px 0;
+}
+
 .single .excerpt {
   margin: 0;
 }
@@ -42,6 +51,9 @@
   margin: 0;
 }
 
+.acf-fields p {
+  text-transform: capitalize;
+}
 /* .single figure figure {
   width: 49%;
 } */

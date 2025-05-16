@@ -1,0 +1,154 @@
+{
+  "loading": "Chargement...",
+  "menu": {
+    "home": "Accueil",
+    "portfolio": "Portfolio",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "slider": {
+    "title": "Nos Projets"
+  },
+  "button": {
+    "readMore": "En savoir plus"
+  },
+  "services": {
+    "title": "Nos services",
+    "description": "Notre agence de design d’intérieur propose des solutions de design personnalisées et innovantes, transformant les espaces en environnements élégants, fonctionnels et inspirants, adaptés à la vision et aux besoins uniques de chaque client.",
+    "items": [
+      {
+        "title": "Conception de concept",
+        "description": "Comprend un plan d’étage avec une disposition proposée du mobilier et des visualisations 3D réalistes. Ce service offre un concept spatial clair et une vision esthétique adaptée à vos besoins — idéal pour comprendre le potentiel de votre espace avant de passer à la réalisation."
+      },
+      {
+        "title": "Conception de concept + Documentation technique",
+        "description": "Comprend tout ce qui est inclus dans le forfait Conception de concept, ainsi qu’un ensemble complet de dessins techniques nécessaires à la réalisation du projet. Ce forfait garantit que votre projet est prêt à être mis en œuvre, avec des détails précis destinés aux entrepreneurs et aux fabricants."
+      },
+      {
+        "title": "Coordination complète du projet",
+        "description": "Comprend la Conception de concept, la Documentation technique, ainsi que l’organisation complète et la supervision des travaux. De la première idée au résultat final, nous gérons l’ensemble du processus — en coordonnant tous les entrepreneurs et en veillant à ce que le projet soit réalisé conformément au plan et aux normes de qualité."
+      },
+      {
+        "title": "Consultation architecturale",
+        "description": "Durée : 60 minutes. Une consultation approfondie avec l’architecte pour discuter de votre espace, de vos besoins et de vos idées. Que vous débutiez ou que vous souhaitiez affiner un concept existant, cette séance aide à définir l’orientation de votre projet."
+      }
+    ]
+  },
+  "projectFlow": {
+    "title": "Déroulement du Projet",
+    "description": "Notre processus de projet assure une expérience de design d'intérieur fluide et efficace, comprenant:",
+    "steps": [
+      {
+        "title": "Première rencontre",
+        "description": "Faire connaissance avec le client, ses besoins, ses souhaits, ses aspirations esthétiques, coordonner le calendrier du projet potentiel"
+      },
+      {
+        "title": "Livraison du plan",
+        "description": "Présentation du plan d'étage et discussion, présentation du mood board et de l'esthétique dans la direction que prendrait le projet"
+      },
+      {
+        "title": "Première entrée 3D",
+        "description": "Correction des conclusions de la dernière réunion et première entrée 3D (visualisation préliminaire)"
+      },
+      {
+        "title": "Livraison des visualisations réalistes",
+        "description": "Les visualisations réalistes montrent comment l'espace pourrait apparaître en respectant les directives du client, discussions sur l'opinion du client"
+      },
+      {
+        "title": "Visualisation finale et présentation",
+        "description": "Modifications selon les commentaires du client et finalisation de l'apparence 3D"
+      },
+      {
+        "title": "Dessins techniques",
+        "description": "Livraison des dessins techniques et préparation détaillée avec les artisans pour la réalisation du projet"
+      },
+      {
+        "title": "Réalisation et supervision du projet",
+        "description": "Le meilleur résultat est certainement obtenu lorsque l'architecte supervise le travail de l'artisan et contrôle la qualité livrée"
+      }
+    ]
+  },
+  "companyNumbers": {
+    "loading": "Chargement des compteurs...",
+    "meetTheStudio": "Découvrez le studio",
+    "inNumbers": "en chiffres",
+    "projects": "Projets",
+    "differentPurposes": "Objectifs différents",
+    "differentCountries": "Pays différents",
+    "realizedProjects": "Projets réalisés",
+    "sqmDesigned": "M² conçus"
+  },
+  "homeCTA": {
+    "title": "Vous avez un projet en tête ?",
+    "subtitle": "N'hésitez pas à dire:",
+    "button": "Discutons-en"
+  },
+  "footer": {
+    "tagline": "Atelier de design d'intérieur et d'architecture",
+    "address": {
+      "street": "71-75 Shelton Street",
+      "area": "Covent Garden",
+      "city": "Londres",
+      "country": "Royaume-Uni"
+    },
+    "locations": {
+      "based": "Actuellement basé et travaillant en:",
+      "current": {
+        "france": "Côte d'Azur France",
+        "monaco": "Monaco"
+      },
+      "available": "Également disponible en:",
+      "other": {
+        "austria": "Autriche",
+        "croatia": "Croatie",
+        "bosnia": "Bosnie-Herzégovine"
+      }
+    },
+    "socials": "Réseaux sociaux",
+    "partners": {
+      "title": "Partenaires"
+    },
+    "copyright": "Tous droits réservés",
+    "madeBy": "Créé par",
+    "privacy": "Politique de confidentialité"
+  },
+  "portfolio": {
+    "visualisation": "Zone de visualisation",
+    "location": "Emplacement",
+    "date": "Date",
+    "seeMore": "Voir plus",
+    "loading": "Chargement des projets...",
+    "error": "Erreur lors du chargement des projets"
+  },
+  "singlePost": {
+    "visualisation": "Zone de visualisation",
+    "location": "Emplacement",
+    "date": "Date",
+    "copyright": "Droits d'auteur",
+    "imageAlt": "Image {{number}} de {{title}}",
+    "notFound": "Article non trouvé",
+    "loading": "Chargement...",
+    "error": "Erreur lors du chargement de l'article"
+  },
+  "contact": {
+    "title": "Nous sommes ouverts aux collaborations et aux discussions sur toute idée de projet",
+    "subtitle": "N'hésitez pas à dire :"
+  },
+  "form": {
+    "nameLabel": "Veuillez laisser votre",
+    "namePlaceholder": "Nom et prénom",
+    "emailPlaceholder": "Votre email",
+    "and": "et",
+    "messageLabel": "n'hésitez pas à nous laisser un",
+    "messagePlaceholder": "Message",
+    "submitButton": "Contactez-nous",
+    "success": "Merci pour votre message, nous vous contacterons bientôt !",
+    "error": "Erreur: {{message}}"
+  },
+  "singlePage": {
+    "loading": "Chargement de la page...",
+    "error": "Erreur: {{message}}",
+    "notFound": "Page non trouvée",
+    "backToHome": "Retour à l'accueil"
+  }
+}

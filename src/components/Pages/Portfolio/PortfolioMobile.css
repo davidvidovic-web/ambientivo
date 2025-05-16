@@ -40,6 +40,10 @@
   height: 390px;
   object-fit: cover;
 }
+
+.card__details p {
+  margin: 15px 0;
+}
 .portfolio .card__title {
   font-size: 2.5em;
   font-family: "Courier New", sans-serif;
@@ -72,14 +76,15 @@ canvas {
   display: none;
 }
 
-.portflio_link {
+.portfolio_link {
   color: #111;
   font-size: 1.15em;
   width: fit-content;
   text-transform: initial;
+  margin-top: 1em;
 }
 
-.portflio_link::after {
+.portfolio_link::after {
   background-color: #111;
 }
 

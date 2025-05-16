@@ -1,0 +1,15 @@
+.language-switcher {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.language-switcher a {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+.language-switcher a.active {
+  font-weight: bold;
+}

@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 import Button from "../Button/Button";
+import { useTranslation } from "react-i18next";
 
 function Slide({ sliderItem = [], index }) {
+  const { t } = useTranslation(); // Get the translation function
+
   return (
     <div
       className="slideshow__slide js-slider-home-slide is-current"
@@ -47,7 +50,7 @@ function Slide({ sliderItem = [], index }) {
               href={sliderItem[2] || "#"}
             >
               <span className="slideshow__slide-caption-subtitle-label">
-                <Button text="Read more"></Button>
+                <Button text={t("button.readMore")} />
               </span>
             </a>
           </div>

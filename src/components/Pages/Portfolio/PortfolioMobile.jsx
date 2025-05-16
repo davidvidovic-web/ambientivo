@@ -7,6 +7,7 @@ import Footer from "../../Footer/Footer";
 import { Link } from "react-router-dom";
 import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.compat.css";
+import { useTranslation } from "react-i18next";
 
 const GET_POST = gql`
   query Portfolio {
@@ -21,13 +22,19 @@ const GET_POST = gql`
         }
         slug
         title
-        excerpt
+        projectsFields {
+          visualisation
+          location
+          date
+          copyright
+        }
       }
     }
   }
 `;
 
-const PortfolioMobile = () => {
+function PortfolioMobile() {
+  const { t, i18n } = useTranslation();
   const { loading, error, data } = useQuery(GET_POST);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -51,8 +58,7 @@ const PortfolioMobile = () => {
           <section className="container portfolio portfolio-mobile">
             <ul className="list">
               {data.projects.nodes.map((project, index) => (
-                <li key={index} className="list__item">
-                  {" "}
+                <li key={project.slug} className="list__item">
                   <article className="card">
                     <section className="card__content">
                       <ScrollAnimation
@@ -63,18 +69,29 @@ const PortfolioMobile = () => {
                           <h1 className="card__title">
                             {index + 1}. {project.title}
                           </h1>
-                          <p
-                            className="card__text"
-                            dangerouslySetInnerHTML={{
-                              __html: project.excerpt,
-                            }}
-                          ></p>
+                          <div className="card__details">
+                            <p>
+                              <strong>{t("portfolio.visualisation")}:</strong>{" "}
+                              {project.projectsFields.visualisation}
+                            </p>
+                            <p>
+                              <strong>{t("portfolio.location")}:</strong>{" "}
+                              {project.projectsFields.location}
+                            </p>
+                            <p>
+                              <strong>{t("portfolio.date")}:</strong>{" "}
+                              {new Intl.DateTimeFormat(i18n.language, {
+                                month: "long",
+                                year: "numeric",
+                              }).format(new Date(project.projectsFields.date))}
+                            </p>
+                          </div>
                           <Link
-                            className="nav__link portflio_link"
+                            className="nav__link portfolio_link"
                             target="_self"
                             to={`/projects/${project.slug}`}
                           >
-                            See more
+                            {t("portfolio.seeMore")}
                           </Link>
                         </section>
                       </ScrollAnimation>
@@ -102,6 +119,6 @@ const PortfolioMobile = () => {
       )}
     </>
   );
-};
+}
 
 export default PortfolioMobile;

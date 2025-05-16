@@ -11,6 +11,7 @@ import { Line } from "three";
 import { Link } from "react-router-dom";
 import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.compat.css";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,13 +28,19 @@ const GET_POST = gql`
         }
         slug
         title
-        excerpt
+        projectsFields {
+          visualisation
+          location
+          date
+          copyright
+        }
       }
     }
   }
 `;
 
-const Portfolio = () => {
+function Portfolio() {
+  const { t, i18n } = useTranslation();
   const { loading, error, data } = useQuery(GET_POST);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -107,36 +114,52 @@ const Portfolio = () => {
         <LoadingScreen onAnimationEnd={handleLoadingEnd} />
       ) : (
         <>
-          <MobileMenu></MobileMenu>
+          <MobileMenu />
           <section className="container portfolio">
             <ul className="list">
               {data.projects.nodes.map((project, index) => (
-                <li key={project.index} className="list__item">
+                <li key={project.slug} className="list__item">
                   <article className="card">
                     <section className="card__content">
                       <section className="card__inner">
                         <h1 className="card__title">
                           {index + 1}. {project.title}
                         </h1>
-                        <p
-                          className="card__text"
-                          dangerouslySetInnerHTML={{ __html: project.excerpt }}
-                        ></p>
+                        <div className="card__details">
+                          <p className="card__text">
+                            <strong>{t("portfolio.visualisation")}:</strong>{" "}
+                            {project.projectsFields.visualisation}
+                          </p>
+                          <p className="card__text">
+                            <strong>{t("portfolio.location")}:</strong>{" "}
+                            {project.projectsFields.location}
+                          </p>
+                          <p className="card__text">
+                            <strong>{t("portfolio.date")}:</strong>{" "}
+                            {new Intl.DateTimeFormat(i18n.language, {
+                              month: "long",
+                              year: "numeric",
+                            }).format(new Date(project.projectsFields.date))}
+                          </p>
+                        </div>
                         <Link
-                          className="nav__link portflio_link"
+                          className="nav__link portfolio_link"
                           target="_self"
                           to={`/projects/${project.slug}`}
                         >
-                          See more
+                          {t("portfolio.seeMore")}
                         </Link>
                       </section>
                     </section>
                     <aside className="card__aside">
-                      <ScrollAnimation animateIn="fadeInRight" animateOut="fadeOutRight">
+                      <ScrollAnimation
+                        animateIn="fadeInRight"
+                        animateOut="fadeOutRight"
+                      >
                         <img
                           className="js-image"
                           src={project.featuredImage.node.sourceUrl}
-                          alt={`Card ${index + 1}`}
+                          alt={project.title}
                         />
                       </ScrollAnimation>
                     </aside>
@@ -146,11 +169,11 @@ const Portfolio = () => {
             </ul>
           </section>
           <section className="outer"></section>
-          <Footer></Footer>
+          <Footer />
         </>
       )}
     </>
   );
-};
+}
 
 export default Portfolio;

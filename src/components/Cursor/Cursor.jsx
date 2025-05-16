@@ -10,6 +10,7 @@ function Cursor() {
         outerAlpha={0.2}
         innerScale={0.7}
         outerScale={5}
+        trailingSpeed={1}
         // outerStyle={{ filter: "invert(1)" }}
         clickables={[
           "a",

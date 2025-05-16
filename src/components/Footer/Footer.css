@@ -55,7 +55,6 @@ footer:hover ~ .cursor > div:first-of-type::before {
   align-items: center;
 }
 
-
 .upperFooter .logo {
   padding: 0 !important;
   background: transparent !important;
@@ -107,6 +106,7 @@ div.upperFooter > div:nth-child(2) > a {
 
 .copyright .dev {
   font-size: 1em;
+  text-transform: capitalize;
 }
 
 footer:hover ~ .cursor > div:first-of-type::after,
@@ -123,6 +123,7 @@ footer:hover ~ .cursor > div:first-of-type::before {
 
 .partners img {
   max-width: 210px;
+  margin: 0 -14px;
 }
 
 .facebook {
@@ -175,7 +176,7 @@ footer:hover ~ .cursor > div:first-of-type::before {
 
   .partners {
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-start !important;
   }
 }
 
@@ -186,5 +187,10 @@ footer:hover ~ .cursor > div:first-of-type::before {
 
   .copyright-mobile {
     display: none;
+  }
+
+  .partners {
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 }

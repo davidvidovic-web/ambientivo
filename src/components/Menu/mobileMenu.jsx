@@ -4,10 +4,14 @@ import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 import { useState, useEffect } from "react";
 import "./mobileMenu.css";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 function MobileMenu() {
   const [isOpen, setOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const { t } = useTranslation(); // Get the translation function
+
   const handleScroll = () => {
     const scrollTop = window.scrollY;
     const stickyThreshold = 150; // The scroll position to trigger the sticky header
@@ -26,6 +30,7 @@ function MobileMenu() {
       window.removeEventListener("scroll", handleScroll);
     };
   });
+
   return (
     <nav
       className={`is-open-${isOpen} main-menu nav ${
@@ -48,23 +53,26 @@ function MobileMenu() {
             <ul className="menu-ul nav__list">
               <li className="nav__el">
                 <Link className="nav__link" target="_self" to="/">
-                  Home
+                  {t("menu.home")}
                 </Link>
               </li>
               <li className="nav__el">
                 <Link className="nav__link" target="_self" to="/portfolio">
-                  Portfolio
+                  {t("menu.portfolio")}
                 </Link>
               </li>
               <li className="nav__el">
                 <Link className="nav__link" target="_self" to="/about">
-                  About
+                  {t("menu.about")}
                 </Link>
               </li>
               <li className="nav__el">
                 <Link className="nav__link" target="_self" to="/contact">
-                  Contact
+                  {t("menu.contact")}
                 </Link>
+              </li>
+              <li className="nav__el">
+                <LanguageSwitcher />
               </li>
             </ul>
           </Menu>

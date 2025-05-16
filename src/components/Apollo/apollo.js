@@ -1,21 +1,27 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
+import { setContext } from '@apollo/client/link/context';
 
-// Use environment variable with fallback - Vite syntax
-const GRAPHQL_BASE_URL = import.meta.env.VITE_GRAPHQL_BASE_URL || 'https://ambientivo.local/graphql';
+const httpLink = createHttpLink({
+  uri: import.meta.env.VITE_GRAPHQL_BASE_URL,
+});
+
+const authLink = setContext((_, { headers }) => {
+  // Get the current language from localStorage
+  const language = localStorage.getItem('i18nextLng') || 'en';
+  
+  return {
+    headers: {
+      ...headers,
+      'Accept-Language': language,
+    }
+  };
+});
 
 const client = new ApolloClient({
-  uri: GRAPHQL_BASE_URL,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
   connectToDevTools: import.meta.env.MODE !== "production",
 });
-
-// Only attach Apollo client to window in non-production
-if (import.meta.env.MODE !== "production") {
-  // Make sure window exists first (for SSR compatibility)
-  if (typeof window !== "undefined") {
-    window.__APOLLO_CLIENT__ = client;
-  }
-}
 
 export default client;
 

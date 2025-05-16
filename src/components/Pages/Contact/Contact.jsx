@@ -2,29 +2,27 @@ import MobileMenu from "../../Menu/mobileMenu";
 import Footer from "../../Footer/Footer";
 import MyForm from "../../Form/Form";
 import WordRotator from "../../WordRotator/WordRotator";
+import { useTranslation } from "react-i18next";
 import "./Contact.css";
+
 function Contact() {
+  const { t } = useTranslation();
+
   return (
     <div>
-      <div
-        style={{
-          background: "#eeeae0",
-        }}
-      >
-        <MobileMenu></MobileMenu>
+      <div style={{ background: "#eeeae0" }}>
+        <MobileMenu />
         <section className="contact">
           <div className="container">
-            <h1>
-              We are open to collaborations and discussions on any project idea
-            </h1>
+            <h1>{t('contact.title')}</h1>
             <div>
-              <span>Don't hesitate to say: </span>
-              <WordRotator></WordRotator>
+              <span>{t('contact.subtitle')} </span>
+              <WordRotator />
             </div>
-            <MyForm></MyForm>
+            <MyForm />
           </div>
         </section>
-        <Footer></Footer>
+        <Footer />
       </div>
     </div>
   );

@@ -85,18 +85,23 @@
     display: none;
   }
   
-  .portflio_link {
+  .portfolio_link {
     color: #111;
     font-size: 1.15em;
     width: fit-content;
     text-transform: initial;
+    margin-top: 1rem;
   }
   
-  .portflio_link::after {
+  .portfolio_link::after {
     background-color: #111;
   }
   
   .card__aside > div {
     height: 100%;
     width: 100%;
-  }ƒ
+  }
+
+  .card__details p {
+    margin: 15px 0;
+  }

@@ -12,6 +12,7 @@ import About from "./components/Pages/About/About.jsx";
 import Contact from "./components/Pages/Contact/Contact.jsx";
 import SinglePage from "./components/Pages/Single/SinglePage.jsx";
 import ScrollToTop from "./components/ScrollTop/ScrollTop.jsx";
+import "./i18n";
 
 const router = createBrowserRouter([
   {

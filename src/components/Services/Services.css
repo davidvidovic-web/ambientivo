@@ -1,20 +1,16 @@
 .services {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 5em;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .services h2 {
-  font-size: 8em;
-  font-family: "Urbanist", sans-serif;
-  margin: 0;
+  font-size: 6em;
+  margin-bottom: 1.5rem;
 }
 
 .services p {
   margin-top: 15px;
-  padding-left: 15px;
   font-size: 1.3em;
 }
 
@@ -29,19 +25,94 @@
   padding-right: 2em;
 }
 
-.services ul {
+.services-grid {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-top: 5em;
+  gap: 2rem;
+  margin-top: 3rem;
 }
 
-.services ul li {
-  padding: 10px 0 20px 0;
+.service-item {
   display: flex;
-  justify-content: space-between;
-  font-size: 2em;
-  border-bottom: 1px solid #cecece;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+}
+
+.service-item.reversed {
+  flex-direction: row-reverse;
+}
+
+.service-item.reversed .service-content {
+  text-align: right;
+}
+
+.service-content {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.background-text {
+  position: relative;
+  font-size: 20rem;
+  font-weight: 900;
+  transform: translateY(50%) scale(0.8) translateX(-14%);
+  color: #0000;
+  -webkit-text-stroke: 1.9px rgba(0, 0, 0, 0.1);
+  z-index: 4;
+  left: 0;
+  right: auto;
+  user-select: none;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.service-item.reversed .background-text {
+  left: auto;
+  right: 0;
+  transform: translateY(50%) scale(0.8) translateX(14%);
+}
+
+.service-item:hover .background-text {
+  transform: translateY(0%) scale(1.05);
+}
+
+.service-content h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.service-content p {
+  line-height: 1.6;
+  opacity: 0.9;
+  position: relative;
+}
+
+.service-image {
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.service-image img:hover {
+  transform: scale(1.05);
 }
 
 @media only screen and (max-width: 540px) {
@@ -53,11 +124,46 @@
     padding: 0;
   }
 
-  .services ul {
+  .services p {
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .services h2 {
+    font-size: 3.5em;
+  }
+  .service-item,
+  .service-item.reversed {
+    flex-direction: column;
     padding: 0;
   }
 
-  .services p {
+  .service-content {
     padding: 0;
+  }
+
+  .service-item.reversed .service-content {
+    text-align: left;
+  }
+
+  .service-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+
+  .service-content h3 {
+    font-size: 1.85rem;
+  }
+
+  .background-text,
+  .service-item.reversed .background-text {
+    font-size: 10rem;
+    top: -75px;
+    left: -5px;
+  }
+
+  .service-item.reversed .background-text {
+    transform: translateX(0%) translateY(50%);
   }
 }

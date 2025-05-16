@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useQuery, gql } from "@apollo/client";
+import { useTranslation } from "react-i18next"; // Add this import
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import MobileMenu from "../../Menu/mobileMenu";
@@ -16,12 +17,19 @@ const GET_ALL_POSTS = gql`
         slug
         excerpt
         content
+        projectsFields {
+          visualisation
+          location
+          date
+          copyright
+        }
       }
     }
   }
 `;
 
 const SinglePost = () => {
+  const { t, i18n } = useTranslation();
   const [lightboxSources, setLightboxSources] = useState([]);
   const [open, setOpen] = useState(false);
   const [postIndex, setPostIndex] = useState(0);
@@ -47,11 +55,7 @@ const SinglePost = () => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(content, "text/html");
     const images = Array.from(doc.getElementsByTagName("img"));
-    const imageSources = images.map((img) => {
-      // const webpSrc = img.src.replace("uploads", "smush-webp") + ".webp";
-      const webpSrc = img.src;
-      return webpSrc;
-    });
+    const imageSources = images.map((img) => img.src);
     setLightboxSources(imageSources);
   };
 
@@ -65,14 +69,29 @@ const SinglePost = () => {
         {post ? (
           <>
             <h1>{post.title}</h1>
-            <p
-              className="excerpt"
-              dangerouslySetInnerHTML={{ __html: post.excerpt }}
-            />
-            {/* <div
-              className="wp-block-gallery"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            /> */}
+            <div className="acf-fields">
+              <p>
+                <strong>{t('singlePost.visualisation')}:</strong>{" "}
+                {post.projectsFields.visualisation}
+              </p>
+              <p>
+                <strong>{t('singlePost.location')}:</strong>{" "}
+                {post.projectsFields.location}
+              </p>
+              <p>
+                <strong>{t('singlePost.date')}:</strong>{" "}
+                {new Intl.DateTimeFormat(i18n.language, {
+                  month: "long",
+                  year: "numeric",
+                }).format(new Date(post.projectsFields.date))}
+              </p>
+              {post.projectsFields.copyright && (
+                <p>
+                  <strong>{t('singlePost.copyright')}:</strong>{" "}
+                  {post.projectsFields.copyright}
+                </p>
+              )}
+            </div>
             {/* Lightbox gallery */}
             <div className="wp-block-gallery">
               <div className="wp-block-gallery has-nested-images columns-default is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex">
@@ -80,7 +99,10 @@ const SinglePost = () => {
                   <figure key={index} className="wp-block-image size-large">
                     <img
                       src={src}
-                      alt={`${post.title} image ${index + 1}`}
+                      alt={t('singlePost.imageAlt', { 
+                        title: post.title, 
+                        number: index + 1 
+                      })}
                       onClick={() => {
                         setOpen(true);
                         setPostIndex(index);
@@ -92,7 +114,7 @@ const SinglePost = () => {
             </div>
           </>
         ) : (
-          <div>Post not found</div>
+          <div>{t('singlePost.notFound')}</div>
         )}
       </div>
       <Lightbox

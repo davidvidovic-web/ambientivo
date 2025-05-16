@@ -1,38 +1,37 @@
-import "./Services.css";
-
+import { useTranslation } from "react-i18next";
 import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.compat.css";
+import "./Services.css";
 
 export default function Services() {
+  const { t } = useTranslation();
+
   return (
     <section className="services">
       <ScrollAnimation animateIn="fadeInLeft" animateOut="fadeOutLeft">
-        <h2>Our services</h2>
-        <p>
-          Our interior design agency offers personalized and innovative design
-          solutions, transforming spaces into stylish, functional, and inspiring
-          environments tailored to each client's unique vision and needs.
-        </p>
+        <h2>{t('services.title')}</h2>
+        <p>{t('services.description')}</p>
       </ScrollAnimation>
-      <ScrollAnimation animateIn="fadeInRight" animateOut="fadeOutRight">
-        <ul>
-          <li>Consultation with the architect</li>
-          <li>Floor plans with furniture positions and dimensions</li>
-          <li>
-            Floor plan with furniture position, dimensions and moodboard
-            proposition
-          </li>
-          <li>
-            Floor plan basis with furniture positions and draft version of 3D
-            visualization
-          </li>
-          <li>
-            Complete project (different type of floor plans, realistic 3D
-            visualisation as well as executive drawings)
-          </li>
-          <li>Complete project with architect supervision of site works</li>
-        </ul>
-      </ScrollAnimation>
+
+      <div className="services-grid">
+        {t('services.items', { returnObjects: true }).map((service, index) => (
+          <ScrollAnimation
+            key={index}
+            animateIn={index % 2 === 0 ? "fadeInLeft" : "fadeInRight"}
+            animateOut={index % 2 === 0 ? "fadeOutLeft" : "fadeOutRight"}
+          >
+            <div className={`service-item ${index % 2 === 0 ? '' : 'reversed'}`}>
+              <div className="service-content">
+                <div className="background-text" aria-hidden="true">
+                  {(index + 1).toString().padStart(2, '0')}
+                </div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </div>
+            </div>
+          </ScrollAnimation>
+        ))}
+      </div>
     </section>
   );
 }

@@ -4,6 +4,7 @@ import counterUp from "counterup2";
 import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.compat.css";
 import { gql, useQuery } from "@apollo/client";
+import { useTranslation } from "react-i18next";
 
 // Query matches what works in your GraphQL IDE
 const GET_AMBIENTIVO_COUNTERS = gql`
@@ -18,6 +19,7 @@ const GET_AMBIENTIVO_COUNTERS = gql`
 `;
 
 function CompanyInNumbers() {
+  const { t } = useTranslation();
   const countersRef = useRef([]);
   const { loading, error, data } = useQuery(GET_AMBIENTIVO_COUNTERS);
   const [animated, setAnimated] = useState([]);
@@ -88,28 +90,43 @@ function CompanyInNumbers() {
   if (loading) {
     return (
       <section className="company-in-numbers">
-        <div className="loading">Loading counters...</div>
+        <div className="loading">{t('companyNumbers.loading')}</div>
       </section>
     );
   }
 
+  // Create a mapping function to get the translation key from counter text
+  const getTranslationKey = (text) => {
+    const textMapping = {
+      'Projects': 'projects',
+      'Different purposes': 'differentPurposes',
+      'Different countries': 'differentCountries',
+      'Realized projects': 'realizedProjects',
+      'Sqm designed': 'sqmDesigned'
+    };
+    return textMapping[text] || text;
+  };
+
   // Use fallback data if there's an error
   const displayCounters = error
     ? [
-        { number: 15, text: "Projects" },
-        { number: 4, text: "Different purposes" },
-        { number: 4, text: "Different countries" },
-        { number: 6, text: "Realized projects" },
-        { number: 15000, text: "Sqm designed" },
+        { number: 15, text: 'projects' },
+        { number: 4, text: 'differentPurposes' },
+        { number: 4, text: 'differentCountries' },
+        { number: 6, text: 'realizedProjects' },
+        { number: 15000, text: 'sqmDesigned' },
       ]
-    : counters;
+    : counters.map(counter => ({
+        ...counter,
+        text: getTranslationKey(counter.text)
+      }));
 
   return (
     <section className="company-in-numbers">
       <ScrollAnimation animateIn="fadeInLeft" animateOut="fadeOutLeft">
         <div className="meet-the-studio">
           <h2>
-            Meet the studio <br /> in numbers
+            {t('companyNumbers.meetTheStudio')} <br /> {t('companyNumbers.inNumbers')}
           </h2>
         </div>
       </ScrollAnimation>
@@ -129,7 +146,7 @@ function CompanyInNumbers() {
               >
                 {counter.number}
               </div>
-              <span>{counter.text}</span>
+              <span>{t(`companyNumbers.${counter.text}`)}</span>
             </div>
           </ScrollAnimation>
         ))}
