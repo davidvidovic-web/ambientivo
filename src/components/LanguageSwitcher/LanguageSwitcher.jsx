@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./LanguageSwitcher.css"; // Import your CSS file for styling
+import "./LanguageSwitcher.css";
 
 function LanguageSwitcher() {
   const { i18n } = useTranslation();
@@ -11,24 +11,26 @@ function LanguageSwitcher() {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-
-    // Store the new language in localStorage
     localStorage.setItem("i18nextLng", lng);
-
-    // Reload current route with new language
     navigate(location.pathname, { replace: true });
+  };
+
+  // Check if language is not set or undefined, default to English
+  const isActive = (lang) => {
+    if (!i18n.language && lang === "en") return true;
+    return i18n.language === lang;
   };
 
   return (
     <div className="language-switcher">
       <Link
-        className={`nav__link ${i18n.language === "en" ? "active" : ""}`}
+        className={`nav__link ${isActive("en") ? "active" : ""}`}
         onClick={() => changeLanguage("en")}
       >
         EN
       </Link>
       <Link
-        className={`nav__link ${i18n.language === "fr" ? "active" : ""}`}
+        className={`nav__link ${isActive("fr") ? "active" : ""}`}
         onClick={() => changeLanguage("fr")}
       >
         FR
